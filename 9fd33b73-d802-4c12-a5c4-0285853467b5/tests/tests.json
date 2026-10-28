@@ -1,0 +1,87 @@
+[
+  {
+    "name": "Browse the redesigned portfolio and filter selected work",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": [
+      "portfolio navigation",
+      "service overview",
+      "project filtering",
+      "responsive project cards",
+      "scroll reveal behavior"
+    ],
+    "description": "Verifies visitors can navigate the new portfolio, inspect services and filter selected work.",
+    "steps": [
+      "Open the portfolio homepage",
+      "Navigate to Services and Selected Work",
+      "Choose the AI filter and then All",
+      "Open the same sections at a mobile viewport"
+    ],
+    "expected": "The redesigned sections remain readable, project filters update the cards, and the mobile layout keeps navigation and cards usable."
+  },
+  {
+    "name": "Configure an estimate and carry it into the inquiry",
+    "viewport": "desktop",
+    "covers": [
+      "service pricing",
+      "complexity pricing",
+      "page-count pricing",
+      "estimate transfer to contact form",
+      "prefilled email inquiry"
+    ],
+    "description": "Verifies estimate choices update the NGN range and the selected estimate can be transferred to the contact inquiry.",
+    "steps": [
+      "Open Project Planner",
+      "Select Full-stack application and Advanced complexity",
+      "Return to Business website and change the page count",
+      "Choose Discuss this estimate",
+      "Inspect the project details field in Contact"
+    ],
+    "expected": "The NGN range updates with service, complexity and page count, and the selected service, complexity and range appear in the contact details."
+  },
+  {
+    "name": "Owner manages showcase projects with authorization",
+    "viewport": "desktop",
+    "covers": [
+      "owner sign-in",
+      "owner email allowlist",
+      "project create",
+      "project feature update",
+      "project deletion",
+      "public showcase refresh"
+    ],
+    "description": "Verifies the authorized owner can publish and manage showcase projects while public visitors only browse.",
+    "steps": [
+      "Open the owner sign-in from the Selected Work section",
+      "Sign in with the authorized owner account",
+      "Publish a project with a valid URL and tags",
+      "Feature the project and refresh the showcase",
+      "Remove the test project"
+    ],
+    "expected": "Only the allowlisted owner can write to the showcase; published changes appear publicly and removal persists."
+  },
+  {
+    "name": "Validate inquiry fields and FAQ interaction on mobile",
+    "viewport": "mobile",
+    "covers": [
+      "required contact fields",
+      "email validation",
+      "WhatsApp contact shortcut",
+      "AI chatbot panel and message submission",
+      "FAQ expand and collapse",
+      "mobile navigation",
+      "reduced-motion preference"
+    ],
+    "description": "Verifies mobile visitors can navigate, expand answers and submit only a valid inquiry form.",
+    "steps": [
+      "Open the mobile navigation and visit the FAQ section",
+      "Use the floating WhatsApp button and verify it opens a WhatsApp chat with the configured number",
+      "Open the Ask AI button and confirm the chatbot panel appears",
+      "Ask what services James Digitals offers and verify a business-specific reply appears",
+      "Expand and collapse an FAQ answer",
+      "Submit the contact form with required fields empty",
+      "Enter valid name and email and complete the project details"
+    ],
+    "expected":      "The WhatsApp shortcut opens a chat for +2348153126056; navigation and FAQ controls work on mobile, invalid required fields are blocked, and a valid inquiry opens the user's email app with details prefilled."
+  }
+]
