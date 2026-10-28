@@ -33,7 +33,7 @@ export default async (request) => {
   }
   if (id && request.method === 'PUT') {
     let body; try { body = await request.json(); } catch { return json(400,{error:'Invalid JSON.'}); }
-    const patch = {}; if(typeof body.title==='string') patch.title=body.title.trim().slice(0,160); if(typeof body.description==='string') patch.description=body.description.trim().slice(0,2000); if(typeof body.url==='string' && /^https?:\\/\\//i.test(body.url)) patch.url=body.url; if(Array.isArray(body.tags)) patch.tags=body.tags.filter(x=>typeof x==='string').slice(0,12); if(typeof body.featured==='boolean') patch.featured=body.featured; if(/^#[0-9a-f]{6}$/i.test(body.accent||'')) patch.accent=body.accent;
+    const patch = {}; if(typeof body.title==='string') patch.title=body.title.trim().slice(0,160); if(typeof body.description==='string') patch.description=body.description.trim().slice(0,2000); if(typeof body.url==='string' && /^https?:\/\//i.test(body.url)) patch.url=body.url; if(Array.isArray(body.tags)) patch.tags=body.tags.filter(x=>typeof x==='string').slice(0,12); if(typeof body.featured==='boolean') patch.featured=body.featured; if(/^#[0-9a-f]{6}$/i.test(body.accent||'')) patch.accent=body.accent;
     const r=await dbRequest(cfg,'showcase_projects?id=eq.'+encodeURIComponent(id),{method:'PATCH',headers:{Prefer:'return=representation'},body:JSON.stringify(patch)}); const data=await r.json().catch(()=>[]); if(!r.ok) return json(400,{error:'Could not update project.'}); if(!data.length) return json(404,{error:'Project not found.'}); return json(200,{project:data[0]});
   }
   if (id && request.method === 'DELETE') {
