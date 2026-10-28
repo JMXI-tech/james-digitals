@@ -1,5 +1,5 @@
 const json = (statusCode, body) => new Response(JSON.stringify(body), { status: statusCode, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
-const config = () => ({ url: process.env.SUPABASE_URL?.replace(/\\/$/, ''), anon: process.env.SUPABASE_ANON_KEY, service: process.env.SUPABASE_SERVICE_ROLE_KEY });
+const config = () => ({ url: process.env.SUPABASE_URL?.replace(/\/$/, ''), anon: process.env.SUPABASE_ANON_KEY, service: process.env.SUPABASE_SERVICE_ROLE_KEY });
 async function ownerFromRequest(request, cfg) {
   const token = request.headers.get('authorization')?.replace(/^Bearer\\s+/i, '');
   if (!token) return null;
