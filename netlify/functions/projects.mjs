@@ -26,7 +26,7 @@ export default async (request) => {
   if (!owner) return json(401, { error: 'Owner sign-in required. Use the secure sign-in link sent to jamesdigitls@gmail.com.' });
   if (request.method === 'POST' && !id) {
     let body; try { body = await request.json(); } catch { return json(400, { error: 'Invalid JSON.' }); }
-    if (typeof body.title !== 'string' || !body.title.trim() || typeof body.description !== 'string' || !/^https?:\\/\\//i.test(body.url || '') || body.url.length > 2048) return json(400, { error: 'Provide a title, description, and valid http(s) URL.' });
+    if (typeof body.title !== 'string' || !body.title.trim() || typeof body.description !== 'string' || !/^https?:\/\//i.test(body.url || '') || body.url.length > 2048) return json(400, { error: 'Provide a title, description, and valid http(s) URL.' });
     const payload = { title:body.title.trim().slice(0,160), url:body.url, description:body.description.trim().slice(0,2000), tags:Array.isArray(body.tags)?body.tags.filter(x=>typeof x==='string').slice(0,12):[], accent:/^#[0-9a-f]{6}$/i.test(body.accent||'')?body.accent:'#3791ff', featured:Boolean(body.featured) };
     const r = await dbRequest(cfg, 'showcase_projects', { method:'POST', headers:{ Prefer:'return=representation' }, body:JSON.stringify(payload) });
     const data = await r.json().catch(()=>[]); if(!r.ok) return json(400,{error:data.message||'Could not save project.'}); return json(201,{project:data[0]});
